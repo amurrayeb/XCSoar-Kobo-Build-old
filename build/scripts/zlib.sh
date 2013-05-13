@@ -8,5 +8,6 @@ pushd $ARCHIVEDIR
 	LD=${CROSSTARGET}-ld CC=${CC} ./configure --prefix=/
 	$MAKE -j$MAKE_JOBS
 	$MAKE DESTDIR=/${DEVICEROOT} install
+	sudo $MAKE DESTDIR=/usr/${CROSSTARGET} install
 popd
 markbuilt
