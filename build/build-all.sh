@@ -1,5 +1,7 @@
 #!/bin/bash
 
+cd ~/kobo/tmp
+
 # Exit on subcommand failure or on undefined variable reference
 set -e -u
 
@@ -19,27 +21,26 @@ for i in \
 	openssl \
 	iconv \
 	expat \
-	dbus \
 	gettext \
 	glib \
-	libusb \
 	zlib \
 	libzip \
+        bzip2 \
 	libxml2 \
-	dosfstools \
-	wireless_tools \
-	wpa_supplicant \
 	libpng \
 	jpegsrc \
-	busybox \
 	libtool \
+        freetype \
 	attr \
 	acl \
-	pciids \
-	udev \
 	lcms \
-	libmng \
-	qt \
+        boost \
+        icns \
+        curl \
+        SDL \
+        SDL_ttf \
+        SDL_gfx \
+        termcap \
 ; do
 	if echo "${SKIP:-}" | grep -q \\\<"$i"\\\> ; then
 		echo "Building of $i suppressed by \$SKIP"
