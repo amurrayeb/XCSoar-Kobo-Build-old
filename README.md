@@ -54,6 +54,8 @@ This is a two part process - one is seting up the build environment, which can b
 2. Get a version of the CodeSourcery ARM GNU toolchain which contains 4.6 or later (I built using 4.7)
 > http://www.mentor.com/embedded-software/sourcery-tools/sourcery-codebench/editions/lite-edition/request?id=478dff82-62bc-44b2-afe2-4684d83b19b9&downloadlite=scblite2012&fmpath=/embedded-software/sourcery-tools/sourcery-codebench/editions/lite-edition/form
 
+[NOTE: You can build with a hardware float version of the compiler, which will probably work better, I will double check this and update as appropriate]
+
 3. Install it into the /usr/arm-none-linux-gnueabi directory (will have ./bin etc)
 
 4. Change ownership so you don't need to compile as root (as above)
