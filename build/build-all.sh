@@ -18,29 +18,19 @@ while test $# -gt 0; do
 done
 
 for i in \
-	openssl \
-	iconv \
-	expat \
-	gettext \
-	glib \
+        termcap \
 	zlib \
-	libzip \
         bzip2 \
-	libxml2 \
 	libpng \
 	jpegsrc \
 	libtool \
         freetype \
-	attr \
-	acl \
-	lcms \
         boost \
         icns \
         curl \
         SDL \
         SDL_ttf \
         SDL_gfx \
-        termcap \
 ; do
 	if echo "${SKIP:-}" | grep -q \\\<"$i"\\\> ; then
 		echo "Building of $i suppressed by \$SKIP"

@@ -7,7 +7,7 @@ ARCHIVEDIR=freetype-2.4.4
 
 pushd $ARCHIVEDIR
 
-        ./configure  --prefix=/${DEVICEROOT} --host=${CROSSTARGET}
+        ./configure  --prefix=/${DEVICEROOT} --host=${CROSSTARGET} --without-zlib
 
 	$MAKE -j$MAKE_JOBS
 	$MAKE install

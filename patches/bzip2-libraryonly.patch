@@ -100,3 +100,14 @@ diff -Naur bzip2-1.0.6/Makefile bzip2-1.0.6-kobo/Makefile
  
  clean: 
  	rm -f *.o libbz2.a bzip2 bzip2recover \
+--- bzip2-1.0.6/Makefile  2013-05-16 02:53:25.822076148 -0700
++++ bzip2-1.0.6-fpic/Makefile   2013-05-16 02:51:03.815510012 -0700
+@@ -21,7 +21,7 @@
+ LDFLAGS=
+ 
+ BIGFILES=-D_FILE_OFFSET_BITS=64
+-CFLAGS=-Wall -Winline -O2 -g $(BIGFILES)
++CFLAGS=-Wall -fPIC -Winline -O2 -g $(BIGFILES)
+ 
+ # Where you want it installed when you do 'make install'
+ 

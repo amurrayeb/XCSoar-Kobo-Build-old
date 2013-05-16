@@ -1,13 +1,12 @@
 #!/bin/bash
 set -e -u
-ARCHIVE=zlib-1.2.4.tar.bz2
-ARCHIVEDIR=zlib-1.2.4
+ARCHIVE=zlib-1.2.7.tar.gz
+ARCHIVEDIR=zlib-1.2.7
 . $KOBO_SCRIPT_DIR/build-common.sh
 
 pushd $ARCHIVEDIR
-	LD=${CROSSTARGET}-ld CC=${CC} ./configure --prefix=/
+	CHOST=${CROSSTARGET} CROSS_PREFIX=${CROSSTARGET} ./configure --prefix=${DEVICEROOT}
 	$MAKE -j$MAKE_JOBS
-	$MAKE DESTDIR=/${DEVICEROOT} install
-	sudo $MAKE DESTDIR=/usr/${CROSSTARGET} install
+	$MAKE  install
 popd
 markbuilt

@@ -5,7 +5,7 @@ ARCHIVEDIR=jpeg-9
 . $KOBO_SCRIPT_DIR/build-common.sh
 
 pushd $ARCHIVEDIR
-	./configure --host=${CROSSTARGET} --enable-shared --enable-static --prefix=/${DEVICEROOT}
+	./configure --host=${CROSSTARGET} --enable-static --prefix=/${DEVICEROOT}
 	$MAKE -j$MAKE_JOBS
 	$MAKE install
 popd

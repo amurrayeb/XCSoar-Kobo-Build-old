@@ -8,7 +8,7 @@ ARCHIVEDIR=boost_1_53_0
 
 pushd $ARCHIVEDIR
   ./bootstrap.sh --without-libraries=python
-  echo "using gcc : arm : arm-none-linux-gnueabi-g++ : ;" >>  tools/build/v2/user-config.jam
+  echo "using gcc : arm : ${CROSSTARGET}-gcc : ;" >>  tools/build/v2/user-config.jam
   ./b2 
   ./b2 install --prefix=/${DEVICEROOT}
 popd

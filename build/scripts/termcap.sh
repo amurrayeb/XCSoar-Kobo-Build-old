@@ -9,7 +9,7 @@ ARCHIVEDIR=termcap-1.3.1
 . $KOBO_SCRIPT_DIR/build-common.sh
 
 pushd $ARCHIVEDIR
-        CC=/usr/bin/${CROSSTARGET}-gcc ./configure  --prefix=/${DEVICEROOT}  --host=${CROSSTARGET} 
+        CC=${CROSSTARGET}-gcc ./configure  --prefix=/${DEVICEROOT}  --host=${CROSSTARGET} 
 	$MAKE -j$MAKE_JOBS
 	$MAKE DESTDIR=/${DEVICEROOT} install
 popd

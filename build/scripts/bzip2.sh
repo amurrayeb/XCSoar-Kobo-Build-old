@@ -8,8 +8,8 @@ patch -p0 < $PATCHESDIR/bzip2-libraryonly.patch
 
 
 pushd $ARCHIVEDIR
-        CROSSPREFIX=arm-none-linux-gnueabi $MAKE
+        CROSSPREFIX=${CROSSTARGET} $MAKE
         $MAKE PREFIX=/${DEVICEROOT} install
-	sudo $MAKE PREFIX=/usr/${CROSSTARGET} install
+
 popd
 markbuilt
