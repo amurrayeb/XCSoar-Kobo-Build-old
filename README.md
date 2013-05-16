@@ -60,6 +60,10 @@ This is a two part process - one is seting up the build environment, which can b
 
 4. Change ownership so you don't need to compile as root (as above)
 
+4a. Install all the xcsoar requirements:
+> sudo apt-get install xsltproc imagemagick librsvg2-bin g++
+These are all needed to run the build process, but don't need to be crosscompiled
+
 5. Change into the <git>/packages directory
 
 6. Run ../build/fetchxcsoarpackages.sh to download all the XCSoar specific packages
