@@ -27,6 +27,9 @@ Unfortunately the Kobo Kernel must be compiled with an older version of GCC (4.4
 
 * Changed the ownership of this directory to me (chown ...)
 
+* Install the uboot-mkimage tool
+> sudo apt-get install uboot-mkimage
+
 ### Building
 
 * Change into the ./fw/imx507/linux-2.6.35.3-USBHOST directory
