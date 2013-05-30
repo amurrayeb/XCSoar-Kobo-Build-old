@@ -1,6 +1,7 @@
-diff -Naur SDL-1.2.15/src/video/fbcon/SDL_fbevents.c SDL-1.2.15-patched/src/video/fbcon/SDL_fbevents.c
---- SDL-1.2.15/src/video/fbcon/SDL_fbevents.c	2012-01-18 22:30:06.000000000 -0800
-+++ SDL-1.2.15-patched/src/video/fbcon/SDL_fbevents.c	2013-05-12 08:42:09.179915474 -0700
+Binary files SDL-1.2.15-original/src/video/fbcon/a.out and SDL-1.2.15/src/video/fbcon/a.out differ
+diff -rupN SDL-1.2.15-original/src/video/fbcon/SDL_fbevents.c SDL-1.2.15/src/video/fbcon/SDL_fbevents.c
+--- SDL-1.2.15-original/src/video/fbcon/SDL_fbevents.c	2012-01-18 22:30:06.000000000 -0800
++++ SDL-1.2.15/src/video/fbcon/SDL_fbevents.c	2013-05-16 03:06:09.350888728 -0700
 @@ -55,6 +55,18 @@
  #define GPM_NODE_FIFO	"/dev/gpmdata"
  #endif
@@ -20,7 +21,7 @@ diff -Naur SDL-1.2.15/src/video/fbcon/SDL_fbevents.c SDL-1.2.15-patched/src/vide
  /*#define DEBUG_KEYBOARD*/
  /*#define DEBUG_MOUSE*/
  
-@@ -166,9 +178,9 @@
+@@ -166,9 +178,9 @@ int FB_EnterGraphicsMode(_THIS)
  			if ( ioctl(keyboard_fd, VT_GETSTATE, &vtstate) == 0 ) {
  				saved_vt = vtstate.v_active;
  			}
@@ -33,7 +34,7 @@ diff -Naur SDL-1.2.15/src/video/fbcon/SDL_fbevents.c SDL-1.2.15-patched/src/vide
  		}
  
  		/* Set the terminal input mode */
-@@ -598,7 +610,7 @@
+@@ -598,7 +610,7 @@ fprintf(stderr, "Using ELO touchscreen\n
  	if ( mousedev == NULL ) {
  		/* FIXME someday... allow multiple mice in this driver */
  		static const char *ps2mice[] = {
@@ -42,7 +43,7 @@ diff -Naur SDL-1.2.15/src/video/fbcon/SDL_fbevents.c SDL-1.2.15-patched/src/vide
  		};
  		/* First try to use GPM in repeater mode */
  		if ( mouse_fd < 0 ) {
-@@ -657,7 +669,7 @@
+@@ -657,7 +669,7 @@ fprintf(stderr, "Using PS2 mouse\n");
  		}
  		/* Next try to use a PPC ADB port mouse */
  		if ( mouse_fd < 0 ) {
@@ -51,7 +52,7 @@ diff -Naur SDL-1.2.15/src/video/fbcon/SDL_fbevents.c SDL-1.2.15-patched/src/vide
  			if ( mouse_fd >= 0 ) {
  #ifdef DEBUG_MOUSE
  fprintf(stderr, "Using ADB mouse\n");
-@@ -666,10 +678,11 @@
+@@ -666,10 +678,11 @@ fprintf(stderr, "Using ADB mouse\n");
  			}
  		}
  	}
@@ -64,7 +65,7 @@ diff -Naur SDL-1.2.15/src/video/fbcon/SDL_fbevents.c SDL-1.2.15-patched/src/vide
  		}
  		mouse_fd = open(mousedev, O_RDONLY, 0);
  		if ( mouse_fd >= 0 ) {
-@@ -700,6 +713,7 @@
+@@ -700,6 +713,7 @@ fprintf(stderr, "Using (default) MS mous
  			}
  		}
  	}
@@ -72,7 +73,7 @@ diff -Naur SDL-1.2.15/src/video/fbcon/SDL_fbevents.c SDL-1.2.15-patched/src/vide
  	if ( mouse_fd < 0 ) {
  		mouse_drv = MOUSE_NONE;
  	}
-@@ -1060,6 +1074,7 @@
+@@ -1060,6 +1074,7 @@ void FB_PumpEvents(_THIS)
  
  		FD_ZERO(&fdset);
  		max_fd = 0;
@@ -80,7 +81,7 @@ diff -Naur SDL-1.2.15/src/video/fbcon/SDL_fbevents.c SDL-1.2.15-patched/src/vide
  		if ( keyboard_fd >= 0 ) {
  			FD_SET(keyboard_fd, &fdset);
  			if ( max_fd < keyboard_fd ) {
-@@ -1072,7 +1087,22 @@
+@@ -1072,7 +1087,22 @@ void FB_PumpEvents(_THIS)
  				max_fd = mouse_fd;
  			}
  		}
@@ -103,7 +104,7 @@ diff -Naur SDL-1.2.15/src/video/fbcon/SDL_fbevents.c SDL-1.2.15-patched/src/vide
  			if ( keyboard_fd >= 0 ) {
  				if ( FD_ISSET(keyboard_fd, &fdset) ) {
  					handle_keyboard(this);
-@@ -1083,6 +1113,18 @@
+@@ -1083,6 +1113,18 @@ void FB_PumpEvents(_THIS)
  					handle_mouse(this);
  				}
  			}
@@ -122,7 +123,7 @@ diff -Naur SDL-1.2.15/src/video/fbcon/SDL_fbevents.c SDL-1.2.15-patched/src/vide
  		}
  	} while ( posted );
  }
-@@ -1252,3 +1294,90 @@
+@@ -1252,3 +1294,90 @@ static SDL_keysym *TranslateKey(int scan
  	}
  	return(keysym);
  }
@@ -213,10 +214,10 @@ diff -Naur SDL-1.2.15/src/video/fbcon/SDL_fbevents.c SDL-1.2.15-patched/src/vide
 +  event1_fd = -1;
 +}
 +#endif
-diff -Naur SDL-1.2.15/src/video/fbcon/SDL_fbevents_c.h SDL-1.2.15-patched/src/video/fbcon/SDL_fbevents_c.h
---- SDL-1.2.15/src/video/fbcon/SDL_fbevents_c.h	2012-01-18 22:30:06.000000000 -0800
-+++ SDL-1.2.15-patched/src/video/fbcon/SDL_fbevents_c.h	2013-05-12 08:04:19.829608992 -0700
-@@ -36,3 +36,9 @@
+diff -rupN SDL-1.2.15-original/src/video/fbcon/SDL_fbevents_c.h SDL-1.2.15/src/video/fbcon/SDL_fbevents_c.h
+--- SDL-1.2.15-original/src/video/fbcon/SDL_fbevents_c.h	2012-01-18 22:30:06.000000000 -0800
++++ SDL-1.2.15/src/video/fbcon/SDL_fbevents_c.h	2013-05-16 03:06:09.350888728 -0700
+@@ -36,3 +36,9 @@ extern void FB_LeaveGraphicsMode(_THIS);
  
  extern void FB_InitOSKeymap(_THIS);
  extern void FB_PumpEvents(_THIS);
@@ -226,9 +227,9 @@ diff -Naur SDL-1.2.15/src/video/fbcon/SDL_fbevents_c.h SDL-1.2.15-patched/src/vi
 +extern void FB_CloseEventX(_THIS);
 +extern void FB_vgamousecallback(int button, int relative, int dx, int dy);
 +  
-diff -Naur SDL-1.2.15/src/video/fbcon/SDL_fbvideo.c SDL-1.2.15-patched/src/video/fbcon/SDL_fbvideo.c
---- SDL-1.2.15/src/video/fbcon/SDL_fbvideo.c	2012-01-18 22:30:06.000000000 -0800
-+++ SDL-1.2.15-patched/src/video/fbcon/SDL_fbvideo.c	2013-05-12 08:04:19.829608992 -0700
+diff -rupN SDL-1.2.15-original/src/video/fbcon/SDL_fbvideo.c SDL-1.2.15/src/video/fbcon/SDL_fbvideo.c
+--- SDL-1.2.15-original/src/video/fbcon/SDL_fbvideo.c	2012-01-18 22:30:06.000000000 -0800
++++ SDL-1.2.15/src/video/fbcon/SDL_fbvideo.c	2013-05-23 03:35:38.721524563 -0700
 @@ -48,7 +48,7 @@
  #include "SDL_fbmatrox.h"
  #include "SDL_fbriva.h"
@@ -246,7 +247,7 @@ diff -Naur SDL-1.2.15/src/video/fbcon/SDL_fbvideo.c SDL-1.2.15-patched/src/video
  /*
  static inline void outb (unsigned char value, unsigned short port)
  {
-@@ -64,6 +65,19 @@
+@@ -64,6 +65,15 @@ static inline void outb (unsigned char v
  */
  #endif /* FB_TYPE_VGA_PLANES */
  
@@ -255,18 +256,14 @@ diff -Naur SDL-1.2.15/src/video/fbcon/SDL_fbvideo.c SDL-1.2.15-patched/src/video
 +#define KOBO_DITHERMATRIX_WIDTH 9
 +#define KOBO_DITHERMATRIX_HEIGHT 13
 +
-+static int dither_pattern2[10][15];
-+
-+// for dithering
-+inline int fb_max( int a, int b ) { return a > b ? a : b; }
-+inline int fb_min( int a, int b ) { return a < b ? a : b; }
++static uint_fast16_t dither_pattern2[KOBO_DITHERMATRIX_HEIGHT+1][KOBO_DITHERMATRIX_WIDTH+1];
 +
 +#endif
 +
  /* A list of video resolutions that we query for (sorted largest to smallest) */
  static const SDL_Rect checkres[] = {
  	{  0, 0, 1600, 1200 },		/* 16 bpp: 0x11E, or 286 */
-@@ -506,6 +520,27 @@
+@@ -506,6 +516,28 @@ static int FB_VideoInit(_THIS, SDL_Pixel
  	const char *rotation;
  	FILE *modesdb;
  
@@ -283,7 +280,8 @@ diff -Naur SDL-1.2.15/src/video/fbcon/SDL_fbvideo.c SDL-1.2.15-patched/src/video
 +	  int k = 0;
 +	  for( ; k < m*n; k++ ) {
 +	    // square scaled then multiple by 3 channels (each channel is (0-64)squared
-+	    dither_pattern2[ (k*R)%m ][ (k*R)%n ] = ((64*k)/(m*n) * (64*k)/(m*n)) * 2.9;
++	    dither_pattern2[ (k*R)%n ][ (k*R)%m ] = (64*k)/(m*n) * 2.85;
++	    //	    dither_pattern2[ (k*R)%n ][ (k*R)%m ] = ((64*k)/(m*n) * (64*k)/(m*n)) * 2.9;
 +	  }
 +	}
 +	    
@@ -294,7 +292,7 @@ diff -Naur SDL-1.2.15/src/video/fbcon/SDL_fbvideo.c SDL-1.2.15-patched/src/video
  	/* Initialize the library */
  	SDL_fbdev = SDL_getenv("SDL_FBDEV");
  	if ( SDL_fbdev == NULL ) {
-@@ -784,6 +819,8 @@
+@@ -784,6 +816,8 @@ static int FB_VideoInit(_THIS, SDL_Pixel
  		}
  	}
  
@@ -303,7 +301,7 @@ diff -Naur SDL-1.2.15/src/video/fbcon/SDL_fbvideo.c SDL-1.2.15-patched/src/video
  	if (shadow_fb) {
  		shadow_mem = (char *)SDL_malloc(mapped_memlen);
  		if (shadow_mem == NULL) {
-@@ -792,11 +829,22 @@
+@@ -792,11 +826,22 @@ static int FB_VideoInit(_THIS, SDL_Pixel
  		} 
  	}
  
@@ -326,7 +324,7 @@ diff -Naur SDL-1.2.15/src/video/fbcon/SDL_fbvideo.c SDL-1.2.15-patched/src/video
  	if ( FB_OpenMouse(this) < 0 ) {
  		const char *sdl_nomouse;
  
-@@ -807,6 +855,7 @@
+@@ -807,6 +852,7 @@ static int FB_VideoInit(_THIS, SDL_Pixel
  			return(-1);
  		}
  	}
@@ -334,7 +332,7 @@ diff -Naur SDL-1.2.15/src/video/fbcon/SDL_fbvideo.c SDL-1.2.15-patched/src/video
  
  	/* We're done! */
  	return(0);
-@@ -1026,7 +1075,8 @@
+@@ -1026,7 +1072,8 @@ static SDL_Surface *FB_SetVideoMode(_THI
  #endif
  	/* Do not use double buffering with shadow buffer */
  	if (shadow_fb) {
@@ -344,7 +342,7 @@ diff -Naur SDL-1.2.15/src/video/fbcon/SDL_fbvideo.c SDL-1.2.15-patched/src/video
  	}
  
  	if ( (vinfo.xres != width) || (vinfo.yres != height) ||
-@@ -1442,6 +1492,7 @@
+@@ -1442,6 +1489,7 @@ static int FB_FlipHWSurface(_THIS, SDL_S
  	return(0);
  }
  
@@ -352,7 +350,7 @@ diff -Naur SDL-1.2.15/src/video/fbcon/SDL_fbvideo.c SDL-1.2.15-patched/src/video
  static void FB_blit16(Uint8 *byte_src_pos, int src_right_delta, int src_down_delta,
  		Uint8 *byte_dst_pos, int dst_linebytes, int width, int height)
  {
-@@ -1449,13 +1500,38 @@
+@@ -1449,13 +1497,57 @@ static void FB_blit16(Uint8 *byte_src_po
  	Uint16 *src_pos = (Uint16 *)byte_src_pos;
  	Uint16 *dst_pos = (Uint16 *)byte_dst_pos;
  
@@ -360,37 +358,56 @@ diff -Naur SDL-1.2.15/src/video/fbcon/SDL_fbvideo.c SDL-1.2.15-patched/src/video
 +	// this will cause the noise to shift around on the screen, amazingly this
 +	// has the effect of causing the pixels to 'refresh' preventing darkening of
 +	// the ghosting as dithered areas overlap.
-+	int random_delta_w = random() % (KOBO_DITHERMATRIX_WIDTH/3);
-+	int random_delta_h = random() % (KOBO_DITHERMATRIX_HEIGHT/3);
++	uint_fast16_t dither_v = rand() % KOBO_DITHERMATRIX_HEIGHT;
++
 +#endif
  	while (height) {
  		Uint16 *src = src_pos;
  		Uint16 *dst = dst_pos;
++
++#ifdef KOBO
++		// we use this for scanning the dither pattern
++		// a lot less math than doing it with a mod on each pixel...
++		uint_fast16_t *dither_h = dither_pattern2[dither_v];
++		uint_fast16_t *dither_h_start = dither_h, *dither_h_end = dither_h + KOBO_DITHERMATRIX_WIDTH;
++
++		if( ++dither_v == KOBO_DITHERMATRIX_HEIGHT ) {
++		  dither_v = 0;
++		}
++#endif
 +
  		for (w = width; w != 0; w--) {
 -			*dst = *src;
 -			src += src_right_delta;
 -			dst++;
 +#ifdef KOBO
-+		  // calculate the brightness of the pixel , squared average is fractionally better
-+		  // at representing the apparent brightnesses of the pixels.
-+		  int c = ((*src >> 10)&0x3e)*((*src >> 10)&0x3e) + 
-+		    ((*src >>5)&0x3f)*((*src >>5)&0x3f) + 
-+		    ((*src<<1)&0x3e)*((*src<<1)&0x3e);          
++		  // Dithering is important to ensure that we have high speed updates, on the e-ink screen
++		  // it will only achieve a low refresh rate when it has colours other than black or white
++		  // we are assuming a 565 screen here as an optimisation, if you get wonky output on a non
++		  // kobo mini device that would be the problem ;)
++
++		  // summed brightness of the pixel, not perfect squared would be better at representing 
++		  // apparent brightness but this is quicker which matters on the Kobo
++		  uint_fast16_t c = ((*src >> 10)&0x3e) +  ((*src >>5)&0x3f) + ((*src<<1)&0x3e);          
 +
 +		  // Check to see if we are above the threshold for the current pixel
 +		  // it is based on the dither pattern.  We use the random offset to deliberately
 +		  // make the pattern move on each update, which will level and reduce the ghosting over time.
-+		  *dst= (c > dither_pattern2[(w+random_delta_w) % KOBO_DITHERMATRIX_WIDTH]
-+			                    [(height+random_delta_h) % KOBO_DITHERMATRIX_HEIGHT])
-+		          ? 0xffff : 0;
++		  *dst = (c > *dither_h) ? 0xffff : 0;
 +
-+		  // Dithering is important to ensure that we have high speed updates, on the e-ink screen
-+		  // it will only achieve a low refresh rate when it has colours other than black or white.
++		  if( ++dither_h == dither_h_end ) {
++		    dither_h = dither_h_start;
++		  }
 +
-+#endif
-+		  src += src_right_delta;
++		  //		  *dst= (c > dither_pattern2[(random_delta_h+height) % KOBO_DITHERMATRIX_HEIGHT][(random_delta_w+w) % KOBO_DITHERMATRIX_WIDTH])
++		  src ++;
++		  dst ++;
++
++#else
++		  *dst = *src;
++		  src++;
 +		  dst++;
++#endif
  		}
  		dst_pos = (Uint16 *)((Uint8 *)dst_pos + dst_linebytes);
  		src_pos += src_down_delta;
