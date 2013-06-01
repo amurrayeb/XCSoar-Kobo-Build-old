@@ -9,7 +9,7 @@ ARCHIVEDIR=SDL_ttf-2.0.11
 [ -e /${DEVICEROOT}/include/SDL/SDL_opengl.h ] && rm /${DEVICEROOT}/include/SDL/SDL_opengl.h
 
 pushd $ARCHIVEDIR
-        CHOST=${CROSSTARGET} CROSS_PREFIX=${CROSSTARGET} SDL_CONFIG=/${DEVICEROOT}/bin/sdl-config ./configure  --prefix=/${DEVICEROOT}  --host=${CROSSTARGET} --disable-sdltest --with-freetype-prefix=/${DEVICEROOT}
+        SDL_CFLAGS=`/${DEVICEROOT}/bin/sdl-config --cflags` SDL_LIBS=`/${DEVICEROOT}/bin/sdl-config --libs` CHOST=${CROSSTARGET} CROSS_PREFIX=${CROSSTARGET} SDL_CONFIG=/${DEVICEROOT}/bin/sdl-config ./configure  --prefix=/${DEVICEROOT}  --host=${CROSSTARGET} --disable-sdltest --with-freetype-prefix=/${DEVICEROOT} --disable-opengl 
 
 	$MAKE -j$MAKE_JOBS
 	$MAKE install
