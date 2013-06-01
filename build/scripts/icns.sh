@@ -7,7 +7,7 @@ ARCHIVEDIR=libicns-0.8.1
 #patch -p0 < $PATCHESDIR/libicns-make.patch
 
 pushd $ARCHIVEDIR
-        LDFLAGS="-L/${DEVICEROOT}/lib" ./configure --host=${CROSSTARGET} --prefix=/${DEVICEROOT}  --with-sysroot=/${DEVICEROOT}
+        LDFLAGS="-L/${DEVICEROOT}/lib -lz" ./configure --host=${CROSSTARGET} --prefix=/${DEVICEROOT}  --with-sysroot=/${DEVICEROOT}
 #        ./configure --target=${CROSSTARGET} --prefix=${DEVICEROOT}
 	$MAKE -j$MAKE_JOBS
 	$MAKE install
