@@ -25,7 +25,6 @@ for i in \
 	jpegsrc \
 	libtool \
         freetype \
-        boost \
         icns \
         curl \
         SDL \
