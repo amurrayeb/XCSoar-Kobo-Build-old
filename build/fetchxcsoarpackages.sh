@@ -9,4 +9,5 @@ wget http://www.libsdl.org/projects/SDL_ttf/release/SDL_ttf-2.0.11.tar.gz
 wget http://www.ferzkopp.net/Software/SDL_gfx-2.0/SDL_gfx-2.0.23.tar.gz
 wget http://netcologne.dl.sourceforge.net/project/boost/boost/1.53.0/boost_1_53_0.tar.bz2
 wget http://www.ijg.org/files/jpegsrc.v9.tar.gz
+wget http://curl.haxx.se/download/curl-7.30.0.tar.bz2
 popd
