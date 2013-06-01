@@ -1,6 +1,6 @@
 #!/bin/sh
 pushd ../packages
-wget http://zlib.net/zlib-1.2.7.tar.gz
+wget http://zlib.net/zlib-1.2.8.tar.gz
 wget http://freefr.dl.sourceforge.net/project/icns/libicns-0.8.1.tar.gz
 wget http://www.bzip.org/1.0.6/bzip2-1.0.6.tar.gz
 wget http://www.libsdl.org/release/SDL-1.2.15.tar.gz

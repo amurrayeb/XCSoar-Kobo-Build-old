@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e -u
-ARCHIVE=zlib-1.2.7.tar.gz
-ARCHIVEDIR=zlib-1.2.7
+ARCHIVE=zlib-1.2.8.tar.gz
+ARCHIVEDIR=zlib-1.2.8
 . $KOBO_SCRIPT_DIR/build-common.sh
 
 pushd $ARCHIVEDIR
