@@ -5,7 +5,7 @@ ARCHIVEDIR=libpng-1.2.43
 . $KOBO_SCRIPT_DIR/build-common.sh
 
 pushd $ARCHIVEDIR
-	./configure --prefix=${DEVICEROOT} --host=${CROSSTARGET}
+	CPPFLAGS="${CPPFLAGS}" LDFLAGS="${LDFLAGS}" ./configure --prefix=${DEVICEROOT} --host=${CROSSTARGET}
 	$MAKE -j$MAKE_JOBS
 	$MAKE install
 popd
