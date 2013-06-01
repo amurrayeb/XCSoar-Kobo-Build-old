@@ -1,6 +1,6 @@
 #!/bin/bash
 set -e -u
-ARCHIVE=SDL_ttf-2.0.11.tar.bz2
+ARCHIVE=SDL_ttf-2.0.11.tar.gz
 ARCHIVEDIR=SDL_ttf-2.0.11
 . $KOBO_SCRIPT_DIR/build-common.sh
 
