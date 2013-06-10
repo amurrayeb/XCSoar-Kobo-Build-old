@@ -52,19 +52,25 @@ or
 
 This is a two part process - one is seting up the build environment, which can be done using this git repository.  The second is actually building XCSoar, which requires code from the XCSoar repository
 
-### Setup
+### Setup - CodeSourcery
 
 * Use a new VM - it makes the buildchain easier as you can't have the same compilers on both...
 
 * Get a version of the CodeSourcery ARM GNU toolchain which contains 4.6 or later (I built using 4.7)
 > http://www.mentor.com/embedded-software/sourcery-tools/sourcery-codebench/editions/lite-edition/request?id=478dff82-62bc-44b2-afe2-4684d83b19b9&downloadlite=scblite2012&fmpath=/embedded-software/sourcery-tools/sourcery-codebench/editions/lite-edition/form
 
-[NOTE: You can build with a hardware float version of the compiler, which will probably work better, I will double check this and update as appropriate]
-
 * Install it into the /usr/arm-none-linux-gnueabi directory (will have ./bin etc)
 
 * Change ownership so you don't need to compile as root (as above)
 
+### Setup - G++ - Hardware Float
+
+* Install g++ toolchain, this should go into /usr/arm-linux-gnueabihf directory
+> sudo apt-get install  gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf
+
+* Change ownership so you don't need to compile as root (as above)
+
+### Building
 
 * Change into the <git>/packages directory
 
@@ -73,6 +79,7 @@ This is a two part process - one is seting up the build environment, which can b
 * Install build tools that are needed
 > sudo apt-get install  xsltproc imagemagick g++ librsvg2-bin libboost-dev
 These are all needed to run the build process, but don't need to be crosscompiled
+If your platform doesn't support pushd or popd then you should install them as well
 
 * change into build directory
 
