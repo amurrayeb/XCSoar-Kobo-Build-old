@@ -76,7 +76,10 @@ These are all needed to run the build process, but don't need to be crosscompile
 
 * change into build directory
 
+* edit buildsetup.sh to put the correct paths in!
+
 * run buildsetup.sh, which will configure this and start a build.  
+* to restart you can just run the last commands from the buildsetup.sh script 
 
 *  Output for all the libraries will go into the /usr/arm-none-linux-gnueabi/[lib|include] directories
 
