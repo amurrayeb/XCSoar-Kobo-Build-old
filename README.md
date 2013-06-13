@@ -26,14 +26,16 @@ Unfortunately the Kobo Kernel must be compiled with an older version of GCC (4.4
 > http://sources.buildroot.net/arm-2010q1-202-arm-none-linux-gnueabi-i686-pc-linux-gnu.tar.bz2
 
 > wget http://sources.buildroot.net/arm-2010q1-202-arm-none-linux-gnueabi-i686-pc-linux-gnu.tar.bz2
+
 > bunzip2 arm-2010q1-202-arm-none-linux-gnueabi-i686-pc-linux-gnu.tar.bz2
+
 > sudo tar -C /usr -xvf arm-2010q1-202-arm-none-linux-gnueabi-i686-pc-linux-gnu.tar --strip 1 
 
 * Changed the ownership of this directory to me (chown ...)
 > sudo chown ${USER}:${USER} /usr/arm-none-linux-gnueabi
 
 * Install the uboot-mkimage tool
-> sudo apt-get install uboot-mkimage
+> sudo apt-get install uboot-mkimage ncurses-dev
 
 * clone repository if you already haven't
 > sudo apt-get install git
@@ -41,7 +43,7 @@ Unfortunately the Kobo Kernel must be compiled with an older version of GCC (4.4
 
 ### Building
 
-* Change into the ./fw/imx507/linux-2.6.35.3-USBHOST directory
+* Change into the ./hw/imx507/linux-2.6.35.3-USBHOST directory
 
 * Run the make command
 >make CROSS_COMPILE=arm-none-linux-gnueabi- ARCH=arm clean uImage
