@@ -25,10 +25,19 @@ Unfortunately the Kobo Kernel must be compiled with an older version of GCC (4.4
 * Install codesourcery GCC toolchain to /usr/arm-none-linux-gnueabi by untaring the downloaded archive into the /usr (ditching the arm2010-blah directory) directory
 > http://sources.buildroot.net/arm-2010q1-202-arm-none-linux-gnueabi-i686-pc-linux-gnu.tar.bz2
 
+> wget http://sources.buildroot.net/arm-2010q1-202-arm-none-linux-gnueabi-i686-pc-linux-gnu.tar.bz2
+> bunzip2 arm-2010q1-202-arm-none-linux-gnueabi-i686-pc-linux-gnu.tar.bz2
+> sudo tar -C /usr -xvf arm-2010q1-202-arm-none-linux-gnueabi-i686-pc-linux-gnu.tar --strip 1 
+
 * Changed the ownership of this directory to me (chown ...)
+> sudo chown ${USER}:${USER} /usr/arm-none-linux-gnueabi
 
 * Install the uboot-mkimage tool
 > sudo apt-get install uboot-mkimage
+
+* clone repository if you already haven't
+> sudo apt-get install git
+> git clone https://github.com/ifly7charlie/XCSoar-Kobo-Build.git
 
 ### Building
 
@@ -47,6 +56,8 @@ or
 > copy to /mnt/onboard/.kobo/upgrade/uImage and touch /mnt/onboard/.kobo/KoboRoot.tgz then insert card and reboot kobo
 or
 > copy to SD card (XCSoar installed), or normal Kobo plugged into laptop in .kobo/upgrade/uImage touch .kobo/KoboRoot.tgz then reboot kobo
+
+note that the memory card is the WHOLE card, not a partition.  So if your card is /dev/sdb use this not the root partition of /dev/sdb1.  The kernel is installed outside of the filesystem at an absolute offset!
 
 ## Building XCSoar
 
